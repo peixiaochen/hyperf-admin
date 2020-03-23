@@ -45,7 +45,7 @@ class AdminPermissionController extends AbstractController
                 throw new \Exception(__($data['id'] ? 'messages.admin_common_edit_fail' : 'messages.admin_common_add_fail', ['name' => __('messages.attributes_admin_permission')]));
             }
             //关联权限的添加和删除
-            if ($data['id']) {
+            if (!$data['id']) {
                 $permissions = [];
                 foreach ($data['roles'] as $v) {
                     $permissions[] = [
