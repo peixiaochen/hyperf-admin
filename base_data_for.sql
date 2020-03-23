@@ -48,41 +48,9 @@ INSERT INTO `admin_menu` VALUES (8, 3, 0, '日志列表', '22', '/recordList', '
 INSERT INTO `admin_menu` VALUES (9, 1, 0, '用户管理', 'team', '/admin', '2020-02-10 13:37:26', '2020-02-10 14:33:12');
 INSERT INTO `admin_menu` VALUES (10, 9, 0, '用户列表', 'unordered-list', '/admin', '2020-02-10 13:38:46', '2020-02-10 14:33:03');
 INSERT INTO `admin_menu` VALUES (11, 1, 0, '版本管理', 'branches', '/version', '2020-02-10 13:53:39', '2020-02-10 14:34:19');
-INSERT INTO `admin_menu` VALUES (12, 10, 0, '版本记录', '33', '/version', '2020-02-10 13:54:57', '2020-02-10 13:55:25');
+INSERT INTO `admin_menu` VALUES (12, 11, 0, '版本记录', '33', '/version', '2020-02-10 13:54:57', '2020-02-10 13:55:25');
 COMMIT;
 
--- ----------------------------
--- Table structure for admin_operation_log
--- ----------------------------
-DROP TABLE IF EXISTS `admin_operation_log`;
-CREATE TABLE `admin_operation_log` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `method` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `input` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `admin_operation_log_user_id_index` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of admin_operation_log
--- ----------------------------
-BEGIN;
-INSERT INTO `admin_operation_log` VALUES (1, 2, '/user/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"\",\"start_time\":\"2020-01-07 22:09:25\",\"end_time\":\"2020-02-08 22:09:25\",\"user_status\":\"1\"}},\"permission\":{\"id\":6,\"name\":\"\\u524d\\u53f0\\u7528\\u6237\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/user\\/index\\n\\/user\\/status\\n\\/user\\/detail\\n\"}}', '2020-02-17 17:41:24', '2020-02-17 17:41:24');
-INSERT INTO `admin_operation_log` VALUES (2, 2, '/user/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"\",\"start_time\":\"2020-01-07 22:09:25\",\"end_time\":\"2020-02-08 22:09:25\",\"user_status\":\"1\"}},\"permission\":{\"id\":6,\"name\":\"\\u524d\\u53f0\\u7528\\u6237\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/user\\/index\\n\\/user\\/status\\n\\/user\\/detail\\n\"}}', '2020-02-17 17:42:51', '2020-02-17 17:42:51');
-INSERT INTO `admin_operation_log` VALUES (3, 2, '/user/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"\",\"start_time\":\"2020-01-07 22:09:25\",\"end_time\":\"2020-02-08 22:09:25\",\"user_status\":\"1\"}},\"permission\":{\"id\":6,\"name\":\"\\u524d\\u53f0\\u7528\\u6237\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/user\\/index\\n\\/user\\/status\\n\\/user\\/detail\\n\"}}', '2020-02-17 17:44:33', '2020-02-17 17:44:33');
-INSERT INTO `admin_operation_log` VALUES (4, 2, '/user/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"\",\"start_time\":\"2020-01-07 22:09:25\",\"end_time\":\"2020-02-08 22:09:25\",\"user_status\":\"1\"}},\"permission\":{\"id\":6,\"name\":\"\\u524d\\u53f0\\u7528\\u6237\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/user\\/index\\n\\/user\\/status\\n\\/user\\/detail\\n\"}}', '2020-02-17 17:44:43', '2020-02-17 17:44:43');
-INSERT INTO `admin_operation_log` VALUES (5, 2, '/admin_user/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"\",\"start_time\":\"2019-01-07 22:09:25\",\"end_time\":\"2020-09-08 22:09:25\",\"role_id\":\"\"}},\"permission\":{\"id\":2,\"name\":\"\\u7528\\u6237\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/admin_user\\/store\\n\\/admin_user\\/update\\n\\/admin_user\\/delete\\n\\/admin_user\\/index\\n\\/admin_user\\/detail\"}}', '2020-02-17 17:45:00', '2020-02-17 17:45:00');
-INSERT INTO `admin_operation_log` VALUES (6, 2, '/admin_menu/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":[]},\"permission\":{\"id\":1,\"name\":\"\\u83dc\\u5355\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/admin_menu\\/store\\n\\/admin_menu\\/update\\n\\/admin_menu\\/delete\\n\\/admin_menu\\/index\\n\\/admin_menu\\/sort\\n\\/admin_menu\\/detail\"}}', '2020-02-17 17:45:16', '2020-02-17 17:45:16');
-INSERT INTO `admin_operation_log` VALUES (7, 2, '/admin_user/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"\",\"start_time\":\"2019-01-07 22:09:25\",\"end_time\":\"2020-09-08 22:09:25\",\"role_id\":\"\"}},\"permission\":{\"id\":2,\"name\":\"\\u7528\\u6237\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/admin_user\\/store\\n\\/admin_user\\/update\\n\\/admin_user\\/delete\\n\\/admin_user\\/index\\n\\/admin_user\\/detail\"}}', '2020-02-17 17:45:46', '2020-02-17 17:45:46');
-INSERT INTO `admin_operation_log` VALUES (8, 2, '/admin_role/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"1\"}},\"permission\":{\"id\":3,\"name\":\"\\u89d2\\u8272\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/admin_role\\/store\\n\\/admin_role\\/update\\n\\/admin_role\\/delete\\n\\/admin_role\\/index\\n\\/admin_role\\/detail\"}}', '2020-02-17 17:45:52', '2020-02-17 17:45:52');
-INSERT INTO `admin_operation_log` VALUES (9, 2, '/admin_role/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"1\"}},\"permission\":{\"id\":3,\"name\":\"\\u89d2\\u8272\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/admin_role\\/store\\n\\/admin_role\\/update\\n\\/admin_role\\/delete\\n\\/admin_role\\/index\\n\\/admin_role\\/detail\"}}', '2020-02-17 17:47:22', '2020-02-17 17:47:22');
-INSERT INTO `admin_operation_log` VALUES (10, 2, '/admin_role/index', 'POST', '127.0.0.1', '{\"data\":{\"localtime\":1531289637,\"data\":{\"page\":1,\"limit\":20,\"keywords\":\"\"}},\"permission\":{\"id\":3,\"name\":\"\\u89d2\\u8272\\u7ba1\\u7406\",\"http_method\":\"get,post\",\"http_path\":\"\\/admin_role\\/store\\n\\/admin_role\\/update\\n\\/admin_role\\/delete\\n\\/admin_role\\/index\\n\\/admin_role\\/detail\"}}', '2020-02-17 17:47:44', '2020-02-17 17:47:44');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for admin_permission
@@ -105,7 +73,7 @@ CREATE TABLE `admin_permission` (
 -- Records of admin_permission
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin_permission` VALUES (1, '菜单管理', '菜单管理', 'get,post', '/admin_menu/store\n/admin_menu/update\n/admin_menu/delete\n/admin_menu/index\n/admin_menu/sort\n/admin_menu/detail', NULL, '2019-12-19 12:21:16', '2019-12-19 12:21:16');
+INSERT INTO `admin_permission` VALUES (1, '菜单管理', '菜单管理', 'get,post', '/admin_menu/store\n/admin_menu/update\n/admin_menu/index\n/admin_menu/sort\n/admin_menu/detail', NULL, '2019-12-19 12:21:16', '2019-12-19 12:21:16');
 INSERT INTO `admin_permission` VALUES (2, '用户管理', '用户管理', 'get,post', '/admin_user/store\n/admin_user/update\n/admin_user/delete\n/admin_user/index\n/admin_user/detail', NULL, '2019-12-19 12:34:24', '2019-12-19 12:34:24');
 INSERT INTO `admin_permission` VALUES (3, '角色管理', '角色管理', 'get,post', '/admin_role/store\n/admin_role/update\n/admin_role/delete\n/admin_role/index\n/admin_role/detail', NULL, '2019-12-19 12:39:37', '2019-12-19 12:39:37');
 INSERT INTO `admin_permission` VALUES (4, '权限管理', '权限管理', 'get,post', '/admin_permission/store\n/admin_permission/update\n/admin_permission/delete\n/admin_permission/index\n/admin_permission/detail', NULL, '2019-12-19 14:05:12', '2019-12-19 14:05:12');
@@ -246,7 +214,7 @@ CREATE TABLE `admin_user` (
 -- Records of admin_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin_user` VALUES (1, 'adv123', '4e80888033b7ea2761d1c4ab0f119f89', '超级超级员', 'http://qn.yocotv.com/FvGDUiBov6bgkrEHZSxe7dgx7hJq', 1, '', NULL, '2019-12-06 18:43:32', '2019-12-06 18:43:32');
+INSERT INTO `admin_user` VALUES (1, 'adv123', '4e80888033b7ea2761d1c4ab0f119f891', '超级超级员', 'http://qn.yocotv.com/FvGDUiBov6bgkrEHZSxe7dgx7hJq', 1, '', NULL, '2019-12-06 18:43:32', '2019-12-06 18:43:32');
 INSERT INTO `admin_user` VALUES (2, 'admin', 'd9bd78f03b0e9e2bbc1e7b278b896bac', '王大锤', 'http://qnp.yocotv.com/FoejoX4LlKZIiy9qB3aXviEiND-f', 1, '{\"email\":\"45636856@qq.com\",\"sex\":1,\"phone\":\"16602904647\"}', NULL, '2019-12-19 10:22:17', '2020-02-16 16:34:19');
 COMMIT;
 

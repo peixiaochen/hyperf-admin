@@ -44,15 +44,15 @@ class AdminRoleController extends AbstractController
                 throw new \Exception(__($data['id'] ? 'messages.admin_common_edit_fail' : 'messages.admin_common_add_fail', ['name' => __('messages.attributes_admin_role')]));
             }
             //关联角色的添加和删除
-            $roles = [];
-            foreach ($data['users'] as $v) {
-                $roles[] = [
-                    'role_id' => $AdminRole->id,
-                    'user_id' => $v,
-                ];
-            }
-            $AdminRole->roleUser()->delete();
-            $data['users'] && $AdminRole->roleUser()->createMany($roles);
+//            $roles = [];
+//            foreach ($data['users'] as $v) {
+//                $roles[] = [
+//                    'role_id' => $AdminRole->id,
+//                    'user_id' => $v,
+//                ];
+//            }
+//            $AdminRole->roleUser()->delete();
+//            $data['users'] && $AdminRole->roleUser()->createMany($roles);
             //关联权限的添加和删除
             $permissions = [];
             foreach ($data['permissions'] as $v) {

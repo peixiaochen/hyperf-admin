@@ -76,15 +76,15 @@ class AdminUserController extends AbstractController
             $AdminUser->roleUser()->delete();
             $data['roles'] && $AdminUser->roleUser()->createMany($roles);
             //关联权限修改与添加
-            $permissions = [];
-            foreach ($data['permissions'] as $v) {
-                $permissions[] = [
-                    'permission_id' => $v,
-                    'user_id'       => $AdminUser->id,
-                ];
-            }
-            $AdminUser->userPermission()->delete();
-            $data['permissions'] && $AdminUser->userPermission()->createMany($permissions);
+//            $permissions = [];
+//            foreach ($data['permissions'] as $v) {
+//                $permissions[] = [
+//                    'permission_id' => $v,
+//                    'user_id'       => $AdminUser->id,
+//                ];
+//            }
+//            $AdminUser->userPermission()->delete();
+//            $data['permissions'] && $AdminUser->userPermission()->createMany($permissions);
             Db::commit();
             return $this->rtn_json('', __($data['id'] ? 'messages.admin_common_edit_success' : 'messages.admin_common_add_success', ['name' => __('messages.attributes_admin_user')]));
         } catch (\Throwable $ex) {

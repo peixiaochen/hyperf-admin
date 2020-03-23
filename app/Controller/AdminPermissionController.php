@@ -44,26 +44,28 @@ class AdminPermissionController extends AbstractController
             if (!$AdminPermission) {
                 throw new \Exception(__($data['id'] ? 'messages.admin_common_edit_fail' : 'messages.admin_common_add_fail', ['name' => __('messages.attributes_admin_permission')]));
             }
-            //关联角色的添加和删除
-            $permissions = [];
-            foreach ($data['roles'] as $v) {
-                $permissions[] = [
-                    'role_id'       => $v,
-                    'permission_id' => $AdminPermission->id,
-                ];
+            //关联权限的添加和删除
+            if ($data['id']) {
+                $permissions = [];
+                foreach ($data['roles'] as $v) {
+                    $permissions[] = [
+                        'role_id'       => $v,
+                        'permission_id' => $AdminPermission->id,
+                    ];
+                }
+                $AdminPermission->rolePermission()->delete();
+                $data['roles'] && $AdminPermission->rolePermission()->createMany($permissions);
             }
-            $AdminPermission->rolePermission()->delete();
-            $data['roles'] && $AdminPermission->rolePermission()->createMany($permissions);
             //关联用户的添加和删除
-            $roles = [];
-            foreach ($data['users'] as $v) {
-                $roles[] = [
-                    'user_id'       => $v,
-                    'permission_id' => $AdminPermission->id,
-                ];
-            }
-            $AdminPermission->userPermission()->delete();
-            $data['users'] && $AdminPermission->userPermission()->createMany($roles);
+//            $roles = [];
+//            foreach ($data['users'] as $v) {
+//                $roles[] = [
+//                    'user_id'       => $v,
+//                    'permission_id' => $AdminPermission->id,
+//                ];
+//            }
+//            $AdminPermission->userPermission()->delete();
+//            $data['users'] && $AdminPermission->userPermission()->createMany($roles);
             Db::commit();
             return $this->rtn_json('', __($data['id'] ? 'messages.admin_common_edit_success' : 'messages.admin_common_add_success', ['name' => __('messages.attributes_admin_permission')]));
         } catch (\Throwable $ex) {
