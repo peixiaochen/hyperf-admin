@@ -28,14 +28,14 @@ class CheckPermissionMiddleware extends BaseMiddleware
             'method'  => $this->request->getMethod(),
             'ip'      => $this->request->header('x-real-ip'),
             'input'   => [
-                'data' => $this->request->all()
+                'data' => $this->request->all(),
             ],
         ];
         $path = $data['path'];
         if ($offset = mb_strpos($data['path'], '/', mb_strpos($data['path'], '/', 2) + 1)) {
             $path = mb_substr($path, 0, $offset);
         }
-        if ($data['user_id'] > 1) {
+        if ($data['user_id'] > 1 && $path != "/user/logout") {
             $role_ids = AdminRoleUser::query(true)->where('user_id', $data['user_id'])->pluck('role_id');
             //判断用户是否有权限
             $perimission = AdminPermission::query(true)
@@ -46,7 +46,7 @@ class CheckPermissionMiddleware extends BaseMiddleware
                     'http_path',
                 ])
                 ->where([
-                    ['http_path', 'like', "%{$path}%"]
+                    ['http_path', 'like', "%{$path}%"],
                 ])
                 ->whereIn('id', array_unique(array_merge(
                     AdminRolePermission::query(true)->whereIn('role_id', $role_ids)->pluck('permission_id')->toArray(),
@@ -66,7 +66,7 @@ class CheckPermissionMiddleware extends BaseMiddleware
                     'http_path',
                 ])
                 ->where([
-                    ['http_path', 'like', "%{$path}%"]
+                    ['http_path', 'like', "%{$path}%"],
                 ])->first();
         }
         $data['input']['permission'] = $perimission->toArray();
