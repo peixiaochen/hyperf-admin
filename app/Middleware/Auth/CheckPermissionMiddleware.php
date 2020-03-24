@@ -35,7 +35,7 @@ class CheckPermissionMiddleware extends BaseMiddleware
         if ($offset = mb_strpos($data['path'], '/', mb_strpos($data['path'], '/', 2) + 1)) {
             $path = mb_substr($path, 0, $offset);
         }
-        if ($data['user_id'] > 1 && $path != "/user/logout") {
+        if ($data['user_id'] > 1) {
             $role_ids = AdminRoleUser::query(true)->where('user_id', $data['user_id'])->pluck('role_id');
             //判断用户是否有权限
             $perimission = AdminPermission::query(true)
