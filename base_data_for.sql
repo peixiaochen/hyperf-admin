@@ -85,6 +85,7 @@ INSERT INTO `admin_permission` VALUES (9, '修改后台用户状态', '修改后
 INSERT INTO `admin_permission` VALUES (10, '获取首页数据', '获取首页数据', 'get,post', '/welcome', NULL, '2020-02-13 21:58:03', '2020-02-13 21:58:03');
 INSERT INTO `admin_permission` VALUES (11, '修改个人信息', '修改个人信息', 'get,post', '/my_info/update', NULL, '2020-02-13 22:56:05', '2020-02-13 22:56:05');
 INSERT INTO `admin_permission` VALUES (12, '文件上传权限', '文件上传权限', 'get,post', '/upload_token', NULL, '2020-02-14 11:21:40', '2020-02-14 11:21:40');
+INSERT INTO `admin_permission` VALUES (13, '用户退出', '用户退出', 'post', '/user/logout', NULL, '2020-02-14 11:21:40', '2020-02-14 11:21:40');
 COMMIT;
 
 -- ----------------------------
@@ -169,6 +170,7 @@ INSERT INTO `admin_role_permission` VALUES (1, 9, '2020-02-17 16:41:43', '2020-0
 INSERT INTO `admin_role_permission` VALUES (1, 10, '2020-02-17 16:41:45', '2020-02-17 16:41:59');
 INSERT INTO `admin_role_permission` VALUES (1, 11, '2020-02-17 16:41:45', '2020-02-17 16:41:59');
 INSERT INTO `admin_role_permission` VALUES (1, 12, '2020-02-17 16:41:45', '2020-02-17 16:41:59');
+INSERT INTO `admin_role_permission` VALUES (1, 13, '2020-02-17 16:41:45', '2020-02-17 16:41:59');
 COMMIT;
 
 -- ----------------------------
