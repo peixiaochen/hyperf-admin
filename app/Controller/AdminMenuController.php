@@ -42,15 +42,17 @@ class AdminMenuController extends AbstractController
                 throw new \Exception(__($data['id'] ? 'messages.admin_common_edit_fail' : 'messages.admin_common_add_fail', ['name' => __('messages.attributes_admin_menu')]));
             }
             //关联角色修改与添加
-//            $roles = [];
-//            foreach ($data['roles'] as $v) {
-//                $roles[] = [
-//                    'role_id' => $v,
-//                    'menu_id' => $AdminMenu->id,
-//                ];
-//            }
-//            $AdminMenu->menuRoles()->delete();
-//            $data['roles'] && $AdminMenu->menuRoles()->createMany($roles);
+            if (!$data['id']) {
+                $roles = [];
+                foreach ($data['roles'] as $v) {
+                    $roles[] = [
+                        'role_id' => $v,
+                        'menu_id' => $AdminMenu->id,
+                    ];
+                }
+                $AdminMenu->menuRoles()->delete();
+                $data['roles'] && $AdminMenu->menuRoles()->createMany($roles);
+            }
             //关联权限修改与添加
             $permissions = [];
             foreach ($data['permissions'] as $v) {
