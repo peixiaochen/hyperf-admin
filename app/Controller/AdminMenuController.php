@@ -71,13 +71,17 @@ class AdminMenuController extends AbstractController
 
     public function index()
     {
-        return $this->rtn_json(AdminMenu::getAdminMenuTree(1, Db::table('admin_role_menu as a_rm')
-            ->leftJoin('admin_role_user as a_ru', 'a_ru.role_id', '=', 'a_rm.role_id')
-            ->where([
-                ['a_ru.user_id', '=', $this->session->get(env('ADMIN_USER_LOGIN_KEY'))],
-            ])
-            ->pluck('a_rm.menu_id')
-            ->toArray()));
+        $menu_ids = [];
+        if (($admin_user_id = $this->session->get(env('ADMIN_USER_LOGIN_KEY'))) > 1) {
+            $menu_ids = Db::table('admin_role_menu as a_rm')
+                ->leftJoin('admin_role_user as a_ru', 'a_ru.role_id', '=', 'a_rm.role_id')
+                ->where([
+                    ['a_ru.user_id', '=', $admin_user_id],
+                ])
+                ->pluck('a_rm.menu_id')
+                ->toArray();
+        }
+        return $this->rtn_json(AdminMenu::getAdminMenuTree(1, $menu_ids));
     }
 
     public function detail(int $id)

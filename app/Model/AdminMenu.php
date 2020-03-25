@@ -44,7 +44,7 @@ class AdminMenu extends Model
         'parent_id'  => 'integer',
         'order'      => 'integer',
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
     ];
 
     public function roles()
@@ -79,20 +79,20 @@ class AdminMenu extends Model
 
     public static function getAdminMenuOne($id)
     {
-        $info        = self::query()->find($id);
-        $info->roles = AdminRoleMenu::roles($info->id);
+        $info              = self::query()->find($id);
+        $info->roles       = AdminRoleMenu::roles($info->id);
         $info->peimissions = AdminMenuPermission::permissions($info->id);
         return $info;
     }
 
     public static function getAdminMenuTree($parent_id = 1, array $menu_ids = [])
     {
+        $AdminMenuQuery = self::query()
+            ->where([['parent_id', '=', $parent_id]]);
         if ($menu_ids) {
-            return [];
+            $AdminMenuQuery->whereIn('id', $menu_ids);
         }
-        return self::query()
-            ->where([['parent_id', '=', $parent_id]])
-            ->whereIn('id', $menu_ids)
+        return $AdminMenuQuery
             ->orderBy('order', 'asc')
             ->orderBy('id', 'asc')
             ->get()
