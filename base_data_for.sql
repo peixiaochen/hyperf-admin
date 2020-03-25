@@ -73,7 +73,7 @@ CREATE TABLE `admin_permission` (
 -- Records of admin_permission
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin_permission` VALUES (1, '菜单管理', '菜单管理', 'get,post', '/admin_menu/store\n/admin_menu/update\n/admin_menu/index\n/admin_menu/sort\n/admin_menu/detail', NULL, '2019-12-19 12:21:16', '2019-12-19 12:21:16');
+INSERT INTO `admin_permission` VALUES (1, '菜单管理', '菜单管理', 'get,post', '/admin_menu/store\n/admin_menu/update\n/admin_menu/sort\n/admin_menu/detail', NULL, '2019-12-19 12:21:16', '2019-12-19 12:21:16');
 INSERT INTO `admin_permission` VALUES (2, '用户管理', '用户管理', 'get,post', '/admin_user/store\n/admin_user/update\n/admin_user/delete\n/admin_user/index\n/admin_user/detail', NULL, '2019-12-19 12:34:24', '2019-12-19 12:34:24');
 INSERT INTO `admin_permission` VALUES (3, '角色管理', '角色管理', 'get,post', '/admin_role/store\n/admin_role/update\n/admin_role/delete\n/admin_role/index\n/admin_role/detail', NULL, '2019-12-19 12:39:37', '2019-12-19 12:39:37');
 INSERT INTO `admin_permission` VALUES (4, '权限管理', '权限管理', 'get,post', '/admin_permission/store\n/admin_permission/update\n/admin_permission/delete\n/admin_permission/index\n/admin_permission/detail', NULL, '2019-12-19 14:05:12', '2019-12-19 14:05:12');
@@ -86,6 +86,7 @@ INSERT INTO `admin_permission` VALUES (10, '获取首页数据', '获取首页�
 INSERT INTO `admin_permission` VALUES (11, '修改个人信息', '修改个人信息', 'get,post', '/my_info/update', NULL, '2020-02-13 22:56:05', '2020-02-13 22:56:05');
 INSERT INTO `admin_permission` VALUES (12, '文件上传权限', '文件上传权限', 'get,post', '/upload_token', NULL, '2020-02-14 11:21:40', '2020-02-14 11:21:40');
 INSERT INTO `admin_permission` VALUES (13, '用户退出', '用户退出', 'post', '/user/logout', NULL, '2020-02-14 11:21:40', '2020-02-14 11:21:40');
+INSERT INTO `admin_permission` VALUES (14, '菜单列表', '菜单列表', 'get,post', '/admin_menu/index', NULL, '2019-12-19 12:21:16', '2019-12-19 12:21:16');
 COMMIT;
 
 -- ----------------------------
@@ -171,6 +172,7 @@ INSERT INTO `admin_role_permission` VALUES (1, 10, '2020-02-17 16:41:45', '2020-
 INSERT INTO `admin_role_permission` VALUES (1, 11, '2020-02-17 16:41:45', '2020-02-17 16:41:59');
 INSERT INTO `admin_role_permission` VALUES (1, 12, '2020-02-17 16:41:45', '2020-02-17 16:41:59');
 INSERT INTO `admin_role_permission` VALUES (1, 13, '2020-02-17 16:41:45', '2020-02-17 16:41:59');
+INSERT INTO `admin_role_permission` VALUES (1, 14, '2020-02-17 16:41:45', '2020-02-17 16:41:59');
 COMMIT;
 
 -- ----------------------------

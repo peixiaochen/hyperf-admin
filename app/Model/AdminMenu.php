@@ -85,17 +85,19 @@ class AdminMenu extends Model
         return $info;
     }
 
-    public static function getAdminMenuTree($parent_id = 1)
+    public static function getAdminMenuTree($parent_id = 1, array $menu_ids = [])
     {
+        if ($menu_ids) {
+            return [];
+        }
         return self::query()
-            ->where([
-                ['parent_id', '=', $parent_id],
-            ])
+            ->where([['parent_id', '=', $parent_id]])
+            ->whereIn('id', $menu_ids)
             ->orderBy('order', 'asc')
             ->orderBy('id', 'asc')
             ->get()
-            ->each(function ($item, $key) {
-                $item->child_data = self::getAdminMenuTree($item->id);
+            ->each(function ($item, $key) use ($menu_ids) {
+                $item->child_data = self::getAdminMenuTree($item->id, $menu_ids);
                 return $item;
             });
     }
