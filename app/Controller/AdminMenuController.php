@@ -76,7 +76,8 @@ class AdminMenuController extends AbstractController
             ->where([
                 ['a_ru.user_id', '=', $this->session->get(env('ADMIN_USER_LOGIN_KEY'))],
             ])
-            ->pluck('a_rm.menu_id')));
+            ->pluck('a_rm.menu_id')
+            ->toArray()));
     }
 
     public function detail(int $id)
