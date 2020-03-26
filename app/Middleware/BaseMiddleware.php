@@ -27,7 +27,7 @@ abstract class BaseMiddleware implements MiddlewareInterface
     protected $response;
     /**
      * @Inject
-     * @var \Redis
+     * @var \Hyperf\Redis\Redis
      */
     protected $redis;
     /**

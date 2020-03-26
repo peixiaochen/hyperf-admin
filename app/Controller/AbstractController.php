@@ -36,7 +36,7 @@ abstract class AbstractController
     protected $response;
     /**
      * @Inject
-     * @var \Redis
+     * @var \Hyperf\Redis\Redis
      */
     protected $redis;
     /**
