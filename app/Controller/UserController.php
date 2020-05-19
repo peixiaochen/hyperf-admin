@@ -16,13 +16,18 @@ class UserController extends AbstractController
 
     public function index()
     {
+        //缺条件
         $param = [
-            'page'        => $this->request->input('data.page', 1),
-            'limit'       => $this->request->input('data.limit', env('PAGE_NUMBER')),
-            'keywords'    => $this->request->input('data.keywords', ''),
-            'start_time'  => $this->request->input('data.start_time', ''),
-            'end_time'    => $this->request->input('data.end_time', ''),
-            'user_status' => $this->request->input('data.user_status') >= 0 ? $this->request->input('data.user_status') : -1,
+            'page'                  => (integer)$this->request->input('data.page', 1),
+            'limit'                 => (integer)$this->request->input('data.limit', env('PAGE_NUMBER')),
+            'keywords'              => $this->request->input('data.keywords', ''),
+            'start_time'            => $this->request->input('data.start_time', ''),
+            'end_time'              => $this->request->input('data.end_time', ''),
+            'last_login_start_time' => $this->request->input('data.last_login_start_time', ''),
+            'last_login_end_time'   => $this->request->input('data.last_login_end_time', ''),
+            'dpt'                   => (integer)$this->request->input('data.dpt', 0),
+            'area_id'               => (integer)$this->request->input('data.area_id', 0),
+            'user_status'           => (integer)$this->request->input('data.user_status') >= 0 ? $this->request->input('data.user_status') : -1,
         ];
         return $this->rtn_json(User::getUserList($param));
     }
@@ -31,7 +36,7 @@ class UserController extends AbstractController
     {
         $data = [
             'ids'    => explode(',', (string)$request->input('data.ids', '')),
-            'status' => $request->input('data.status')
+            'status' => $request->input('data.status'),
         ];
         //状态为0，需要禁止用户的所有提现申请
         if ($data['ids'] && User::query()->whereIn('id', $data['ids'])->update(['status' => $data['status']])) {
